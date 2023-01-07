@@ -12,10 +12,8 @@ import java.util.List;
 
 @Service
 public class CountryService {
-
     @Autowired
     private Environment environment;
-
     @Autowired
     private CountryRepository countryRepository;
 
@@ -28,5 +26,8 @@ public class CountryService {
         List<Country> countriesData = vaccovid.getCountriesData(countriesEndPoint, apiKey, apiHost);
         countryRepository.saveAll(countriesData);
         return countriesData;
+    }
+    public List<Country> getCountryByCodeAndName(String iso, String countryName){
+        return countryRepository.getCountryByThreeLetterSymbolAndCountry(iso,countryName);
     }
 }
