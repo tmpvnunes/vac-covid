@@ -1,7 +1,7 @@
 package com.codegate01.vaccovid.service;
 
 import com.codegate01.vaccovid.entities.Country;
-import com.codegate01.vaccovid.rapidapi.Vaccovid;
+import com.codegate01.vaccovid.rapidapi.CovidCasesPayload;
 import com.codegate01.vaccovid.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -22,8 +22,8 @@ public class CountryService {
         String apiHost = environment.getProperty("X-RapidAPI-Host");
         String countriesEndPoint = environment.getProperty("countries-data-endpoint");
 
-        Vaccovid vaccovid = new Vaccovid();
-        List<Country> countriesData = vaccovid.getCountriesData(countriesEndPoint, apiKey, apiHost);
+        CovidCasesPayload covidCasesPayload = new CovidCasesPayload();
+        List<Country> countriesData = covidCasesPayload.getCountriesData(countriesEndPoint, apiKey, apiHost);
         countryRepository.saveAll(countriesData);
         return countriesData;
     }

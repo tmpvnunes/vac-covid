@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.List;
-
+/*
+call this API to get all information for coviid-19 World data, such as Total cases, New cases, Total deaths,
+New deaths, Total Recovered, New recovered, Total Tests, New Tests, Active Cases, SeriousCritical, InfectionRisk, CaseFatalityRate,
+ */
 @RestController
 @RequestMapping("api/v1/")
 public class WorldController {

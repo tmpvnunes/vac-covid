@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @NoArgsConstructor
@@ -46,6 +47,7 @@ import java.io.Serializable;
 
 @Entity(name = "WORLD")
 public class World implements Serializable {
+    @Serial
     private final static long serialVersionUID = -4177390940124811476L;
     @JsonIgnore
     @Id

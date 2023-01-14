@@ -1,5 +1,4 @@
 package com.codegate01.vaccovid.entities;
-import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -10,12 +9,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @NoArgsConstructor
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+        "id",
+        "rank",
         "Country",
+        "Continent",
         "TwoLetterSymbol",
         "ThreeLetterSymbol",
         "Infection_Risk",
@@ -31,20 +35,34 @@ import lombok.Setter;
         "ActiveCases",
         "TotalTests",
         "Population",
-        "Serious_Critical"
+        "one_Caseevery_X_ppl",
+        "one_Deathevery_X_ppl",
+        "one_Testevery_X_ppl",
+        "Deaths_1M_pop",
+        "Serious_Critical",
+        "Tests_1M_Pop",
+        "TotCases_1M_Pop"
 })
-@Entity(name = "Country")
-public class Country implements Serializable{
-    private final static long serialVersionUID = -373986465457092945L;
-
+@Entity(name = "Africa")
+public class Africa implements Serializable {
+    private final static long serialVersionUID = 1252410495782381927L;
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "recordID", nullable = false)
+    private Long recordId;
+    @JsonProperty("id")
+    @Column(name = "id")
+    public String id;
+    @JsonProperty("rank")
+    @Column(name = "Ranking")
+    public int ranking;
     @JsonProperty("Country")
     @Column(name = "Country")
     public String country;
+    @JsonProperty("Continent")
+    @Column(name = "Continent")
+    public String continent;
     @JsonProperty("TwoLetterSymbol")
     @Column(name = "TwoLetterSymbol")
     public String twoLetterSymbol;
@@ -77,7 +95,7 @@ public class Country implements Serializable{
     public Integer newDeaths;
     @JsonProperty("TotalRecovered")
     @Column(name = "TotalRecovered")
-    public Integer totalRecovered;
+    public String totalRecovered;
     @JsonProperty("NewRecovered")
     @Column(name = "NewRecovered")
     public Integer newRecovered;
@@ -86,12 +104,29 @@ public class Country implements Serializable{
     public Integer activeCases;
     @JsonProperty("TotalTests")
     @Column(name = "TotalTests")
-    public Integer totalTests;
+    public String totalTests;
     @JsonProperty("Population")
     @Column(name = "Population")
-    public Integer population;
+    public String population;
+    @JsonProperty("one_Caseevery_X_ppl")
+    @Column(name = "one_Caseevery_X_ppl")
+    public Integer oneCaseeveryXPpl;
+    @JsonProperty("one_Deathevery_X_ppl")
+    @Column(name = "one_Deathevery_X_ppl")
+    public Integer oneDeatheveryXPpl;
+    @JsonProperty("one_Testevery_X_ppl")
+    @Column(name = "one_Testevery_X_ppl")
+    public Integer oneTesteveryXPpl;
+    @JsonProperty("Deaths_1M_pop")
+    @Column(name = "Deaths_1M_pop")
+    public Integer deaths1MPop;
     @JsonProperty("Serious_Critical")
     @Column(name = "Serious_Critical")
     public Integer seriousCritical;
-
+    @JsonProperty("Tests_1M_Pop")
+    @Column(name = "Tests_1M_Pop")
+    public Integer tests1MPop;
+    @JsonProperty("TotCases_1M_Pop")
+    @Column(name = "TotCases_1M_Pop")
+    public Integer totCases1MPop;
 }
